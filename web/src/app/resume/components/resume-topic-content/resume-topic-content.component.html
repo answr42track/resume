@@ -1,0 +1,35 @@
+<div>
+    @for (paragraph of topic.paragraphs; track $index) {
+        <div class="pb-6">
+            <h1 class="flex items-center text-xl font-bold">
+                {{ paragraph.paragraphTitle }}
+                @if (paragraph.paragraphTitleExtention && paragraph.paragraphTitleExtention !== "") {
+                    <span class="font-normal flex items-center">
+                        ,&nbsp;{{ paragraph.paragraphTitleExtention }}
+                        <a mat-icon-button [href]="paragraph.link">
+                            <mat-icon>link</mat-icon>
+                        </a>
+                    </span>
+                }
+            </h1>
+            <p class="opacity-75 pb-4">
+                {{ paragraph.paragraphSubtitle }}
+            </p>
+            @for (content of paragraph.content; track $index) {
+                <p class="pb-2">
+                    <span class="font-bold">
+                        {{ content.leading }}
+                    </span> 
+                    @if (content.text) {
+                        :&nbsp;{{ content.text }}
+                    }
+                    @if (content.linkName && content.link) {
+                        <a mat-button [href]="content.link">
+                            {{ content.linkName }}
+                        </a>
+                    }
+                </p>
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,151 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@include mat.core();
+
+
+$_palettes: (
+  primary: (
+    0: #000000,
+    10: #151d1c,
+    20: #2a3231,
+    25: #353d3c,
+    30: #404847,
+    35: #4c5453,
+    40: #58605f,
+    50: #707977,
+    60: #8a9291,
+    70: #a5adab,
+    80: #c0c8c6,
+    90: #dce4e2,
+    95: #eaf2f1,
+    98: #f3fbf9,
+    99: #f6fefc,
+    100: #ffffff,
+  ),
+  secondary: (
+    0: #000000,
+    10: #00201f,
+    20: #163534,
+    25: #22413f,
+    30: #2d4c4a,
+    35: #395856,
+    40: #456462,
+    50: #5e7d7b,
+    60: #779794,
+    70: #91b1af,
+    80: #accdca,
+    90: #c7e9e6,
+    95: #d6f8f5,
+    98: #e3fffc,
+    99: #f2fffd,
+    100: #ffffff,
+  ),
+  tertiary: (
+    0: #000000,
+    10: #29170e,
+    20: #402c21,
+    25: #4c372c,
+    30: #584236,
+    35: #654d41,
+    40: #72594d,
+    50: #8c7164,
+    60: #a78b7d,
+    70: #c3a596,
+    80: #e0c0b1,
+    90: #fedccc,
+    95: #ffede6,
+    98: #fff8f6,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+  neutral: (
+    0: #000000,
+    4: #050c0f,
+    6: #081116,
+    10: #0d1d25,
+    12: #112129,
+    17: #1c2c34,
+    20: #23323b,
+    22: #27373f,
+    24: #2c3c44,
+    25: #2e3e46,
+    30: #394952,
+    35: #45555e,
+    40: #50616a,
+    50: #697983,
+    60: #82939d,
+    70: #9daeb8,
+    80: #b8c9d4,
+    87: #ccdde8,
+    90: #d4e5f0,
+    92: #daebf6,
+    94: #dff0fb,
+    95: #e2f3fe,
+    96: #e8f5fe,
+    98: #f4faff,
+    99: #fafcff,
+    100: #ffffff,
+  ),
+  neutral-variant: (
+    0: #000000,
+    10: #181c1c,
+    20: #2c3131,
+    25: #373c3c,
+    30: #434847,
+    35: #4e5353,
+    40: #5a5f5e,
+    50: #737877,
+    60: #8d9290,
+    70: #a8acab,
+    80: #c3c7c6,
+    90: #dfe3e2,
+    95: #edf2f0,
+    98: #f6faf9,
+    99: #f9fdfc,
+    100: #ffffff,
+  ),
+  error: (
+    0: #000000,
+    10: #410002,
+    20: #690005,
+    25: #7e0007,
+    30: #93000a,
+    35: #a80710,
+    40: #ba1a1a,
+    50: #de3730,
+    60: #ff5449,
+    70: #ff897d,
+    80: #ffb4ab,
+    90: #ffdad6,
+    95: #ffedea,
+    98: #fff8f7,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+);
+
+$_rest: (
+  secondary: map.get($_palettes, secondary),
+  neutral: map.get($_palettes, neutral),
+  neutral-variant: map.get($_palettes,  neutral-variant),
+  error: map.get($_palettes, error),
+);
+$_primary: map.merge(map.get($_palettes, primary), $_rest);
+$_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
+
+$light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: $_primary,
+    tertiary: $_tertiary,
+  ),
+));
+
+html {
+  @include mat.all-component-themes($light-theme);
+}
+
+.mat-sidenav-container {
+  border-radius: 12px !important;
+}

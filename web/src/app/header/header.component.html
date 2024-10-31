@@ -1,0 +1,37 @@
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-5 bg-gradient-to-b from-primary-500 to-secondary-700 p-5 z-50 h-[8rem] shadow-md sticky top-0">
+    <div class="flex items-center">
+        <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" class="hidden lg:flex">
+            <img class="rounded-full size-[5rem]" src="assets/profile.jpg" alt="A picture of me"/>
+        </a>
+        <div class="pl-5">
+            <div class="lg:flex flex-row">
+                <h1 class="text-2xl font-bold text-white pr-2">
+                    Raphaël Rail
+                </h1>
+                <div class="flex flex-row items-center gap-2">
+                    @for(contact of contacts; track $index) {
+                        <a [href]="contact.link" class="bg-secondary-500 p-1 rounded-lg size-6 flex items-center shadow-lg">
+                            <img [src]="contact.iconPath" [alt]="contact.name"> 
+                        </a>
+                    }
+                </div>
+            </div>
+            <h2 class="hidden lg:flex text-xl font-bold text-white opacity-55">
+                Welcome to my resume !
+            </h2>
+        </div>
+    </div>
+    <p class="text-md font-bold italic indent-5 text-white hidden lg:flex items-center justify-center">
+        “The Answer to the Great Question... Of Life, the Universe and Everything... Is... Forty-two,' said Deep Thought, with infinite majesty and calm.”
+    </p>
+    <div class="flex items-center justify-end">
+        <div class="grid grid-cols-2 gap-4">
+            <button mat-flat-button routerLink="/home">
+                <p class="px-4">Home</p>
+            </button>
+            <button mat-flat-button routerLink="/resume">
+                <p class="px-4">Resume</p>
+            </button>
+        </div>
+    </div>
+</div>

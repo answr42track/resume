@@ -1,0 +1,16 @@
+<div class="p-5">
+    <mat-sidenav-container class="h-[calc(100svh-10.5rem)]">
+        <mat-sidenav [opened]="true" mode="side" class="p-4">
+            <mat-nav-list>
+                @for(topic of topics; track $index) {
+                    <mat-list-item [activated]="isSelected($index)" (click)="onSectionSelect($index)">
+                        {{ topic.topic }}
+                    </mat-list-item>
+                }
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content class="p-6 overflow-scroll">
+          <app-resume-topic-content [topic]="topics[selectedIndex()]"></app-resume-topic-content>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
